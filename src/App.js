@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useContext, useState } from "react";
+import { Header } from "./Components/header/Header";
+import { MealsSummary } from "./Components/meals-summary/MealsSummary";
+import { MealsSummaryCard } from "./Components/meals-summary/MealsSummaryCard";
+import { Meals } from "./Components/meals/Meals";
+import { AppProvider } from "./Components/store/Context";
+import { Busket } from "./Components/Busket/Busket";
 
 function App() {
+  const { open } = useContext(AppProvider);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <MealsSummary />
+      <MealsSummaryCard />
+      <Meals />
+      {open && <Busket />}
     </div>
   );
 }
